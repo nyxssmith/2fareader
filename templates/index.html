@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <script>
+        $(window).ready(loadCamera);
+    </script>
+{% endblock %}
+
+{% block topbar %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container container2">
+    <div class="content">        
+        <div id="disp-area">
+            <p>Capture your image which includes some text.</p>
+            <div>
+                <video id="player" autoplay></video>
+            </div>
+            <div>
+                <!-- <button id="cap" class="btn large success pad">Capture</button> -->
+                <button id="cap" class="btn large success pad" onclick="clickCapture()">Capture</button>
+            </div>           
+        </div>
+        <div id="disp-area2">
+            <div class="inner-container">              
+                <div>
+                    <div><img src="" alt="Snapshot" id="snapshot" class="pad"></div>                        
+                </div>
+                <h5>Detected text</h5>
+                <div id="result">
+                    <label for="result-list">Text ( Confidence )</label>
+                    <select name="products" id="result-list" size=5 disabled></select>
+                </div>
+                <div class="pad">
+                    <p><b>NOTE : </b><i>Confidence</i> means how much likely the object detected in the image is TEXT, 
+                        not the accuracy of the word.</p>
+                </div>
+                <button id="camback" class="btn large info" style="float:right;" onclick=loadCamera()>Back to Camera</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
